@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Fusion Tables Layer Example: Legend</title>
+
+  <link href="https://developers.google.com/fusiontables/docs/samples/style/default.css"
+        rel="stylesheet" type="text/css">
+    <script type="text/javascript"
+        src="https://maps.google.com/maps/api/js?sensor=false"></script>
+     <style>
+         body {
+         background-color: lightblue;
+         }
+ 
+         h1 {
+         color: white;
+         text-align: center;
+         }
+       </style>
+</head>
+<body>
+    <div id="map-canvas"></div> 
+    <div class="main">
+        <div class="header">
+          <!-- Select Area -->
+         <div class="sub_part1">
+          <div>
+           <fieldset>
+           <legend>Select Area</legend>
+           <div>
+              <input type="radio" id="huey" name="drone" value="huey"
+                   checked>
+              <label for="huey">District</label>
+           </div>
+           <div>
+              <input type="radio" id="dewey" name="drone" value="dewey">
+              <label for="dewey">Taluka </label>
+           </div>
+           <div>
+              <input type="radio" id="louie" name="drone" value="louie">
+              <label for="louie">Vilage</label>
+           </div>
+           </fieldset>
+         </div>
+         </div>
+          
+          <!-- Select Sub Area -->
+         <div class="sub_part2">
+          <div>
+           <fieldset>
+           <legend>Select  Sub Area</legend>
+           <div>
+              <input type="radio" id="huey" name="drone" value="huey"
+                   checked>
+              <label for="huey">District</label>
+           </div>
+           <div>
+              <input type="radio" id="dewey" name="drone" value="dewey">
+              <label for="dewey">Taluka </label>
+           </div>
+           <div>
+              <p></p>
+           </div>
+           </fieldset>
+         </div>
+         </div>
+      
+         <!-- sub type -->
+         <div class="sub_part3">
+          <div>
+           <fieldset>
+           <legend>Select Type</legend>
+           <div>
+              <input type="radio" id="huey" name="drone" value="huey"
+                   checked>
+              <label for="huey">Household</label>
+           </div>
+           <div>
+              <input type="radio" id="dewey" name="drone" value="dewey">
+              <label for="dewey">Demography</label>
+           </div>
+           <div>
+              <p></p>
+           </div>
+           </fieldset>
+         </div>
+         </div>
+         <!-- Select Caste -->
+      <div class="sub_part4">
+          <div>
+           <fieldset>
+           <legend>Select Caste</legend>
+           <div>
+              <input type="radio" id="huey" name="drone" value="huey"
+                   checked>
+              <label for="huey">General</label>
+           </div>
+           <div>
+              <input type="radio" id="dewey" name="drone" value="dewey">
+              <label for="dewey">SC </label>
+           </div>
+           <div>
+              <input type="radio" id="louie" name="drone" value="louie">
+              <label for="louie">ST</label>
+           </div>
+           </fieldset>
+         </div>
+         </div>
+         
+           <!-- Select Region -->
+      <div class="sub_part5">
+          <div>
+           <fieldset>
+           <legend>Select Region</legend>
+           <div>
+              <input type="radio" id="huey" name="drone" value="huey"
+                   checked>
+              <label for="huey">Total</label>
+           </div>
+           <div>
+              <input type="radio" id="dewey" name="drone" value="dewey">
+              <label for="dewey">Urban</label>
+           </div>
+           <div>
+              <input type="radio" id="louie" name="drone" value="louie">
+              <label for="louie">Rural</label>
+           </div>
+           </fieldset>
+         </div>
+         </div>
+      
+      
+          </div>
+
+          <button onclick="downloadtable()"><b>Download table</b></button>
+                        <!-- <button onclick="generatePDF()">Download as PDF</button> -->
+   
+     <div class="row text-center" id="demography-dropdown"> 
+         <div >
+             <b>Select Demography Census Attribute:</b>
+               <select id="attr-dropdown-demography" onchange="handleDropdownChangeDemography()"  id="attr-dropdown-demography"></select>
+         </div>  
+         
+          <div class="row  text-center" > 
+                        <div 
+                        id="show-range"><b>Range</b>
+                           
+                  <input type="number" name="position" min="0"
+                           value="0" max="470" />
+                     
+                   <button>Position Cursor</button>
+             
+                   <script>
+                   function setCursor(pos) {
+                       var tag = document.getElementById("editable");
+                         
+                       // Creates range object
+                       var setpos = document.createRange();
+                         
+                       // Creates object for selection
+                       var set = window.getSelection();
+                         
+                       // Set start position of range
+                       setpos.setStart(tag.childNodes[0], pos);
+                         
+                       // Collapse range within its boundary points
+                       // Returns boolean
+                       setpos.collapse(true);
+                         
+                       // Remove all ranges set
+                       set.removeAllRanges();
+                       // Add range with respect to range object.
+                       set.addRange(setpos);
+              
+                       // Set cursor on focus
+                       tag.focus();
+                     }
+        
+                     $('button').click(function() {
+                     var $pos = $("input[name='position']").val();
+                     setCursor($pos);
+                     });
+                   </script>
+                        </div>
+
+                        <div> id="show-selected-attribute"<b>Selected Attribute</b> </div>
+                        <div> id="show-primary-attribute"<b>Primary Attribute</b> </div>
+                        <div> id="show-secondary-attribute"<b>Secondary Attribute</b> </div>
+                        <div> id="show-tertiory-attribute"<b>Tertiory Attribute</b> </div>
+                       
+                     </div>
+                    <div style="text-align: center;"> 
+                        <b>Select operator</b>
+                        <select id="op">
+                            <option value=">"><b>></b></option>
+                            <option value="<"><b> < </b></option>
+                            <option value="<="><b><=</b></option>
+                            <option value=">="><b>>=</b></option>
+                            <!-- <option value="<>"><></option> -->
+                        </select>
+                        <br>
+                        <label ><b>Select Value:</b></label>
+                        <input type="number" id="variable" name="variable">
+                        <br>
+                        <label for=""><b>Select color:</b></label>
+                        <input type="color" id="color" name="color" value="#ff0000">
+                        <br>
+                        <button onclick="executequery()"><b>Execute query</b></button>
+                    </div>
+
+                    
+                    <div style="text-align: center;" class="m-5">
+                        <button onclick="downloadtable()"><b>Download table</b></button>
+                        <!-- <button onclick="generatePDF()">Download as PDF</button> -->
+
+                    </div>
+
+                     <div style="text-align: center;" class="m-5">
+                        <button onclick="downloadtable()"><b>Download table</b></button>
+                        <!-- <button onclick="generatePDF()">Download as PDF</button> -->
+
+                    </div>
+                   </div>
+                   <style>
+                     * {
+                       box-sizing: border-box;
+                     }
+                     
+                     /* Create four equal columns that floats next to each other */
+                     .column {
+                       float: left;
+                       width: 25%;
+                       padding: 10px;
+                     }
+                     
+                     /* Clear floats after the columns */
+                     .row:after {
+                       content: "";
+                       display: table;
+                       clear: both;
+                     }
+                     
+                     /* Responsive layout - makes a two column-layout instead of four columns */
+                     @media screen and (max-width: 900px) {
+                       .column  {
+                         width: 50%;
+                       }
+                     }
+                     
+                     /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+                     @media screen and (max-width: 600px) {
+                       .column  {
+                         width: 100%;
+                       }
+                     }
+                     </style>
+                     </head>
+                     <body>
+                     
+                     <h2>Column Layout</h2>
+                     
+                     <div style="text-align: center;" class="m-5">
+                        <button onclick="downloadtable()"><b>Download table</b></button>
+                        <!-- <button onclick="generatePDF()">Download as PDF</button> -->
+                     </div>
+                     <div class="colomn">
+                       <div class="column" style="background-color:#aaa;">
+                       <h2>DISTRICT</h2>
+                       <div 
+                     class="row">
+                     <div class="column">
+                        <div>
+                           <input type="radio" id="huey" name="drone" value="huey"
+                                checked>
+                           <label for="huey">District</label>
+                        </div>
+                     </div>
+                       </div>
+                       <div class="row" style="background-color:#bbb;">
+                       <h2>ATTRIBUTE</h2>
+                       <div class="column">
+                        <div> id="show-selected-attribute"<b>Selected Attribute</b> </div>  
+                     </div>
+                     
+                    
+                  
+      
+</body>
+</html>
+
+
+

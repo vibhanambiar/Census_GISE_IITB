@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+    <title>Census</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+       
+<!--        
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#"> <img src="/static/images/logo-removebg.png" alt="community-gis" class="logo-img"> </a>
+
+  <div class="project-title">HealthGIS<div style="font-size: x-small;">Source: Census 2011</div></div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item disable">
+        <p> <span class="sr-only">(current)</span></p>
+      </li>
+
+
+
+
+      <li class="nav-item active">
+          <a class="btn btn-secondary" href="https://ee.humanitarianresponse.info/x/#URXRVsvI" style="background-color: rgb(233,89,89, 0.508);">Volunteer Form</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto">
+      <a class = 'btn btn-secondary' href="/" style="background-color: rgba(233, 89, 89, 0.508);">Home</a>
+      <a class = 'btn btn-secondary' href="/dashboard" style="background-color: rgb(233,89,89, 0.508);" >Themes</a>
+    </ul>
+
+  </div>
+</nav> -->
+       <script>
+
+            
+     </script>
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" id="mainNav">
+            <div class="container">
+                <h1>
+                <a class="navbar-brand" href="#page-top"><img src="assets/img/communityGIS logo.png"  alt="..." /></a>
+                <br><h1>Census Data Visualization and Analysis</h1>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars ms-1"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                       <li class="nav-item"><a class="nav-link" href="index.html" style="color: black;">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html" style="color: black;">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="download.html" style="color: black;">Download</a></li>
+                        <li class="nav-item"><a class="nav-link" href="home.html" style="color: black;">Attribute Info</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+ <title>Visualization of Maharashtra Census Data 2011</title>
+
+    <style>
+ 
+
+div.transbox {
+  margin: 30px;
+  background-color: #ffffff;
+  border: 1px solid black;
+  opacity: 0.6;
+}
+
+
+
+table {
+    table-layout: auto;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 95%;
+  
+}
+table.fixed { table-layout:fixed; }
+table.fixed td { overflow: hidden; }
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+/* ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+} */
+</style>
+</head>
+<body>
+<div class="navbar">
+<!-- <ul class="" >
+
+        <a href="home.html" <button class="btn"> <i class="fa fa-home"> </i> Home</button></a>
+        <a href="download.html" <button class="btn"> <i class="fa fa-download"> </i> Download Data</button></a>
+        <a href="visualization.html" <button class="btn"> <i class="fa fa-bar-chart"> </i> Visualization</button></a>
+        <a href="map.html" <button class="btn"> <i class="fa fa-bar-chart"> </i> Map</button></a>
+
+ 
+</ul> -->
+</div>
+
+    <div class="background">
+  <div class="transbox">
+      <h1 style="color: maroon; margin: 1.7cm;"padding-left="10cm";>
+                <b>
+                    Introduction
+                </b>
+            </h1>
+ 
+        <p>       We want to help college teachers to teach their students about visualizing and analyzing census data. This is a tutorial-based website where teachers can teach students about the Maharashtra household amenities District, Taluka, and Village level
+            Map, which are based on 2011 Census data of Maharashtra. Also, this site has combined the original dataset with geospatial vector data format files so that students can do some of their own analyses based on their needs in the near future. Where
+            all the attributes of all this census data will be available and their explanation, with all this Map, also has some Histograms and some Scatter plots of those Census data. To understand all this, this site has a proper explanation for them. We
+            also provide this All Map original dataset with geospatial vector data format so that the student can download it on their local PC and play with them, and there will be instructions so that they can do some of their own analysis. Also, have some
+            pre-given homework or exercise to do for students to identify their learning levels and evaluate them. May also include some case studies.
+            
+            <br>
+            <b style="margin: 1.5cm;">
+                    A Geographic Information System (GIS) captures, stores, analyzes, manages, and presents data that are linked to various location(s), Districts, Sub-Districts, Villages, etc., on a digital map. GIS can be used across multiple industries to understand trends and relationships with respect to a geographic context. This understanding aids management and decision-making.
+            </b>
+        </p>
+        <p style="font-size:18px; color: black;" align="justify"> 
+                  Census is the total process of collecting, compiling, analyzing, or otherwise disseminating demographic, household, economic, and social data pertaining to all inhabitants in a country or a well-defined area of a country at a specific time. The census provides data on the country's population, including its size, distribution, socioeconomic, demographic, household, and other characteristics.  
+                
+                <br>
+               
+                        The Indian Census is the most credible source of information on demography. Initiated in 1872, Census 2011 is the 15th National Census of the country. 
+
+                    The census data is utilized by the government, NGOs, researchers, commercial and private organizations, etc., for administration, planning, policymaking, as well as management, and assessment of numerous programs. Census data is used by researchers and demographers to assess population growth and trends and develop estimates. The census data is also vital for businesses and sectors to enhance and plan their operations in order to expand into previously untapped markets. 
+
+</p>
+</h1>
+</h1>
+</center>
+</div>
+</div>
+
+
+
+    </body>
+    </html>

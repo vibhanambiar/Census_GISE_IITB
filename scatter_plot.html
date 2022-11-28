@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scatter Plot</title>
+    <link href="style1.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+</head>
+<body onload="main()">
+ <div style="width:100%;">
+ <div style="float:left; width:40%;">
+
+<label><b>Select Area</label>
+ <select class="select_area" id="area" value="area" onchange="handleclick()">
+ <option value="dist">District</option>
+ <option value="taluka">Taluka</option>
+ <option value="village">Village</option>
+ </select> 
+
+ <br>
+
+ <label><b>Select Sub Area</label>
+ <select class="select_sub_area" id="sub_area" onchange="handleclick()">
+     <option value="dist">District</option>
+     <option value="taluka">Taluka</option>
+ 
+ </select>
+
+  <br>
+ <label><b>Select Type</label>
+ <select class="select_type" id="type" onchange="handleclick()">
+     <option value="household">Households</option>
+     <option value="demography">demography</option>
+ 
+ </select>
+
+  <br>
+ <label><b>Select Caste</label>
+ <select class="select_caste" id="caste" onchange="handleclick()">
+     <option value="general">General</option>
+     <option value="sc">SC</option>
+     <option value="st">ST</option>
+ 
+ </select>
+
+  <br>
+ <label><b>Select Region</label>
+ <select class="select_region" id="region" onchange="handleclick()"> 
+     <option value="total">Total</option>
+     <option value="urban">Urban</option>
+     <option value="rural">Rural</option>
+ 
+ </select>
+<br>
+ <button class="btn-info" style="margin:30px;" onclick="handleclick()">Get data </button>
+<div class="" >
+ <br>
+ <label><b>X-axis </label>
+<br>
+ <select class="xaxis_data" id="x_axis">
+     <option value="total">Total</option>
+     <option value="urban">Urban</option>
+     <option value="rural">Rural</option>
+ 
+ </select>
+ <br>
+ <label><b>y-axis </label>
+<br>
+ <select class="xaxis_data" id="x_axis">
+     <option value="total">Total</option>
+     <option value="urban">Urban</option>
+     <option value="rural">Rural</option>
+ 
+ </select>
+ </div>
+ <br>
+ <button class="submit" onclick="main()"> Plot</button>
+</div>
+
+<!-- <script>
+    function handleclick()
+    {
+       if(Selection.arguments(id="area"&& value="dist" )&&(id="type"&&value="household"))
+    }
+</script> -->
+
+<div style="float:right; width:60%; ">
+    Ploting the scatter plot of Census Data 2011
+    
+    <script>
+        function main()
+        {
+          var svg=d3.select("svg"),
+          margin=200,
+          width=svg.attr("width")-margin,
+          height=svg.attr("height")-margin;
+          
+          var xScale=d3.scaleBand().range([0,width]).padding(0.4),
+              yScale=d3.scaleLinear().range([height,0]);
+          
+          var g=svg.append("g").attr("transform","translate("+100+","+100+")");
+          d3.csv("Demographic_Village_Level_Total.csv").then(function(data)
+          {
+            xScale.domain( data.map(function(d){return d.district_n;}));
+            yScale.domain([0,d3.max(data,function(d){return d.TOT_P;})]);
+       
+            g.append("g").attr('transform','translate(0,'+height+'O)')
+            .call(d3.axisBottom(xscale))
+       
+            g.append('g').call(d3.axisLeft(yscale).tickFormat(function(d){
+                return "$" +d;
+            }).ticks(10));
+        
+            g.selectAll(".bar")
+            .data(data)
+            .enter().append("rect")
+            .attr("class","bar")
+            .attr("x",function(d){return xscale(d.district_n);})
+            .attr("y",function(d){return yscale(d.TOT_P);})
+            .attr("width",xscale.bandwidth())
+            .atttr("height",function(d){return height-yscale(d.TOT_P);});
+
+        });
+        }
+    
+        </script>
+<svg width="600" height="600">
+
+</svg>
+
+</div>
+</body>
+</html>
